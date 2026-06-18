@@ -11,73 +11,148 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #F5F2EC;
+      background:
+        radial-gradient(140% 60% at 50% 0%, #ECE7DC 0%, #F5F2EC 45%);
+      background-color: #F5F2EC;
       min-height: 100vh;
       padding-bottom: 96px;
       color: #0D3347;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .header { animation: riseIn 0.5s ease both; }
+    .accordion .card { animation: riseIn 0.5s ease both; }
+    .accordion .card:nth-child(1) { animation-delay: 0.05s; }
+    .accordion .card:nth-child(2) { animation-delay: 0.10s; }
+    .accordion .card:nth-child(3) { animation-delay: 0.15s; }
+    .accordion .card:nth-child(4) { animation-delay: 0.20s; }
+    .accordion .card:nth-child(5) { animation-delay: 0.25s; }
+    .review-card { animation: riseIn 0.5s ease both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
 
     /* ── HEADER ── */
     .header {
-      background: #0D3347;
-      padding: 40px 24px 32px;
+      background:
+        radial-gradient(120% 100% at 100% 0%, #15576b 0%, rgba(21,87,107,0) 55%),
+        linear-gradient(160deg, #0d3548 0%, #0a2735 100%);
+      padding: 36px 24px 28px;
       position: relative;
       overflow: hidden;
     }
-    .header::before {
-      content: '';
-      position: absolute; top: -40px; right: -40px;
-      width: 180px; height: 180px;
+    .header-glow {
+      position: absolute;
+      top: -60px; right: -30px;
+      width: 200px; height: 200px;
       border-radius: 50%;
-      background: rgba(24,123,142,0.18);
+      background: radial-gradient(circle, rgba(201,145,61,0.22) 0%, rgba(201,145,61,0) 70%);
       pointer-events: none;
     }
-    .header::after {
-      content: '';
-      position: absolute; bottom: -20px; left: -20px;
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      background: rgba(201,145,61,0.12);
-      pointer-events: none;
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      z-index: 1;
     }
+    .monogram {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #C9913D;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(201,145,61,0.55);
+      box-shadow: 0 0 0 4px rgba(201,145,61,0.08);
+      letter-spacing: 0.02em;
+    }
+    .header-titles { flex: 1; min-width: 0; }
     .header-clinic {
-      color: #7FB8C6;
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      color: #84BCCA;
+      font-size: 10.5px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .header h1 {
       font-family: 'Playfair Display', serif;
       color: #FFFFFF;
-      font-size: 28px;
-      line-height: 1.2;
+      font-size: 25px;
+      line-height: 1.18;
       margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
     .header-subtitle {
       color: #A8D4DC;
-      font-size: 14px;
-      margin-bottom: 20px;
+      font-size: 13.5px;
+      font-weight: 400;
+    }
+    .cedula-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 16px;
+      padding: 9px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .cedula-line svg { flex-shrink: 0; }
+    .cedula-line span {
+      font-size: 11px;
+      color: #CFE6EC;
+      line-height: 1.4;
+      font-weight: 500;
     }
     .badges {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
     .badge {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #E0F0F4;
-      font-size: 11px;
-      padding: 4px 10px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: #E6F2F5;
+      font-size: 10.5px;
+      padding: 5px 11px;
       border-radius: 20px;
       font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
+    .badge-star { color: #C9913D; }
 
     /* ── INTRO ── */
     .intro {
-      padding: 20px 24px 12px;
+      padding: 22px 24px 10px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #C9913D;
+      margin-bottom: 6px;
+    }
+    .intro p {
       color: #4A6572;
       font-size: 13px;
       line-height: 1.6;
@@ -216,27 +291,42 @@
     .reviews-title-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: #0D3347;
-      border-radius: 12px;
-      padding: 14px 16px;
+      gap: 14px;
+      background: radial-gradient(120% 100% at 0% 0%, #15576b 0%, rgba(21,87,107,0) 60%), linear-gradient(160deg, #0d3548 0%, #0a2735 100%);
+      border-radius: 14px;
+      padding: 16px 18px;
     }
-    .stars-big {
-      font-size: 22px;
-      color: #C9913D;
+    .reviews-score-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       flex-shrink: 0;
     }
     .reviews-score {
-      font-size: 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
       font-weight: 700;
       color: #FFFFFF;
-      margin-bottom: 2px;
+      line-height: 1;
+    }
+    .stars-big {
+      font-size: 13px;
+      color: #C9913D;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+    .reviews-divider {
+      width: 1px;
+      align-self: stretch;
+      background: rgba(255,255,255,0.14);
+      flex-shrink: 0;
     }
     .reviews-count {
-      font-size: 11px;
-      color: #7FB8C6;
-      line-height: 1.4;
+      font-size: 12.5px;
+      color: #BFDEE6;
+      line-height: 1.5;
     }
+    .reviews-count strong { color: #FFFFFF; font-weight: 600; }
     .reviews-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -301,11 +391,12 @@
       margin: 16px 16px 0;
     }
     .locations-title {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 700;
       color: #0D3347;
-      margin-bottom: 10px;
-      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+      font-family: 'Playfair Display', serif;
     }
     .location-card {
       display: flex;
@@ -359,6 +450,39 @@
       padding: 10px 0 4px;
     }
 
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 32px 24px 16px;
+      margin-top: 8px;
+    }
+    .footer-mono {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #C9913D;
+      border: 1.5px solid rgba(201,145,61,0.5);
+      background: #FFFFFF;
+    }
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #0D3347;
+      margin-bottom: 3px;
+    }
+    .footer-tag {
+      font-size: 11.5px;
+      color: #8A9AA2;
+      letter-spacing: 0.02em;
+    }
+
     /* ── STICKY CTA ── */
     .sticky-cta {
       position: fixed;
@@ -391,18 +515,35 @@
 
   <!-- HEADER -->
   <div class="header">
-    <p class="header-clinic">Clínica CERYA · Monterrey</p>
-    <h1>Dr. Axel Schwartz Velazco</h1>
-    <p class="header-subtitle">Especialista en Urología · Cédula 3279454</p>
+    <div class="header-glow"></div>
+    <div class="header-top">
+      <div class="monogram">AS</div>
+      <div class="header-titles">
+        <h1>Dr. Axel Schwartz Velazco</h1>
+        <p class="header-subtitle">Especialista en Urología</p>
+      </div>
+    </div>
+
+    <div class="cedula-line">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#C9913D"/>
+        <path d="M7 12.5l3.2 3.2L17 9" stroke="#0D3347" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Cédula profesional verificada · Consejo Nacional Mexicano de Urología</span>
+    </div>
+
     <div class="badges">
-      <span class="badge">Consejo Nac. de Urología</span>
-      <span class="badge">289 opiniones verificadas</span>
-      <span class="badge">Mínima invasión</span>
+      <span class="badge"><span class="badge-star">★</span> 4.9 · 289 opiniones</span>
+      <span class="badge">+30 años de experiencia</span>
+      <span class="badge">Cirugía de mínima invasión</span>
     </div>
   </div>
 
   <!-- INTRO -->
-  <p class="intro">Selecciona una categoría para ver los servicios disponibles.</p>
+  <div class="intro">
+    <span class="eyebrow">Servicios</span>
+    <p>Toca una categoría para ver los tratamientos disponibles.</p>
+  </div>
 
   <!-- ACCORDION -->
   <div class="accordion">
@@ -500,13 +641,15 @@
 
   <!-- REVIEWS -->
   <div class="reviews-section">
+    <span class="eyebrow">Opiniones</span>
     <div class="reviews-header">
       <div class="reviews-title-row">
-        <span class="stars-big">★★★★★</span>
-        <div>
-          <p class="reviews-score">4.9 / 5</p>
-          <p class="reviews-count">Basado en 289 opiniones verificadas en Doctoralia</p>
+        <div class="reviews-score-block">
+          <p class="reviews-score">4.9</p>
+          <span class="stars-big">★★★★★</span>
         </div>
+        <div class="reviews-divider"></div>
+        <p class="reviews-count">Basado en <strong>289 opiniones</strong> verificadas en Doctoralia</p>
       </div>
     </div>
 
@@ -575,7 +718,8 @@
 
   <!-- UBICACIONES -->
   <div class="locations-section">
-    <p class="locations-title">📍 Consultorios</p>
+    <span class="eyebrow">Ubicaciones</span>
+    <p class="locations-title">Consultorios</p>
 
     <a class="location-card" href="https://www.google.com/maps/search/?api=1&query=Soto+La+Marina+528+Mitras+Norte+Monterrey+NL" target="_blank">
       <div class="location-icon">🏥</div>
@@ -589,7 +733,7 @@
     <a class="location-card" href="https://www.google.com/maps/search/?api=1&query=Lic+Jose+Benitez+2505+Obispado+Monterrey+NL" target="_blank">
       <div class="location-icon">🏥</div>
       <div class="location-info">
-        <p class="location-name">Clínica CERYA · Obispado</p>
+        <p class="location-name">Consultorio Obispado</p>
         <p class="location-address">Lic. José Benítez 2505-A, Jardines del Cerro, Monterrey N.L. 64060</p>
       </div>
       <span class="location-arrow">›</span>
@@ -605,6 +749,13 @@
     </a>
 
     <p class="insurance-note">✓ Acepta AXA, Atlas, Banorte, Pan-American y más aseguradoras</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-mono">AS</div>
+    <p class="footer-name">Dr. Axel Schwartz Velazco</p>
+    <p class="footer-tag">Especialista en Urología</p>
   </div>
 
   <!-- STICKY WHATSAPP -->
