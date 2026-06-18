@@ -206,28 +206,157 @@
       background: #145f70;
     }
 
-    /* ── INFO STRIP ── */
-    .info-strip {
-      margin: 16px 16px 0;
-      background: #FFF8EE;
-      border: 1px solid #EDD99A;
+    /* ── REVIEWS ── */
+    .reviews-section {
+      margin: 20px 16px 0;
+    }
+    .reviews-header {
+      margin-bottom: 14px;
+    }
+    .reviews-title-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #0D3347;
       border-radius: 12px;
       padding: 14px 16px;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
     }
-    .info-icon { font-size: 18px; flex-shrink: 0; }
-    .info-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #7A5000;
+    .stars-big {
+      font-size: 22px;
+      color: #C9913D;
+      flex-shrink: 0;
+    }
+    .reviews-score {
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
       margin-bottom: 2px;
     }
-    .info-text {
+    .reviews-count {
+      font-size: 11px;
+      color: #7FB8C6;
+      line-height: 1.4;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 360px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    .review-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .review-stars {
+      color: #C9913D;
       font-size: 12px;
-      color: #9A7020;
-      line-height: 1.5;
+      letter-spacing: 1px;
+    }
+    .review-text {
+      font-size: 12.5px;
+      color: #2D4A56;
+      line-height: 1.55;
+      flex: 1;
+      font-style: italic;
+    }
+    .review-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid #F0EDE8;
+      padding-top: 8px;
+    }
+    .review-author {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0D3347;
+    }
+    .review-service {
+      font-size: 10.5px;
+      color: #187B8E;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .reviews-link {
+      display: block;
+      text-align: center;
+      font-size: 12.5px;
+      color: #187B8E;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 0 8px;
+    }
+    .reviews-link:hover { text-decoration: underline; }
+
+    /* ── LOCATIONS ── */
+    .locations-section {
+      margin: 16px 16px 0;
+    }
+    .locations-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0D3347;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .location-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .location-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 10px rgba(13,51,71,0.1);
+    }
+    .location-icon {
+      font-size: 20px;
+      width: 38px; height: 38px;
+      background: #EEF7F9;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .location-info { flex: 1; }
+    .location-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0D3347;
+      margin-bottom: 3px;
+    }
+    .location-address {
+      font-size: 11.5px;
+      color: #5E7A86;
+      line-height: 1.45;
+    }
+    .location-arrow {
+      font-size: 22px;
+      color: #187B8E;
+      font-weight: 300;
+      flex-shrink: 0;
+    }
+    .insurance-note {
+      font-size: 12px;
+      color: #187B8E;
+      font-weight: 500;
+      text-align: center;
+      padding: 10px 0 4px;
     }
 
     /* ── STICKY CTA ── */
@@ -369,13 +498,113 @@
 
   </div><!-- /accordion -->
 
-  <!-- INFO STRIP -->
-  <div class="info-strip">
-    <span class="info-icon">📍</span>
-    <div>
-      <p class="info-title">Clínica CERYA · Obispado</p>
-      <p class="info-text">Lic. José Benítez 2505, Col. Obispado, Monterrey N.L. · Acepta AXA, Atlas, Banorte y más.</p>
+  <!-- REVIEWS -->
+  <div class="reviews-section">
+    <div class="reviews-header">
+      <div class="reviews-title-row">
+        <span class="stars-big">★★★★★</span>
+        <div>
+          <p class="reviews-score">4.9 / 5</p>
+          <p class="reviews-count">Basado en 289 opiniones verificadas en Doctoralia</p>
+        </div>
+      </div>
     </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Buen Dr, concreto en su explicación y atención médica."</p>
+        <div class="review-footer">
+          <span class="review-author">R.J.H.</span>
+          <span class="review-service">Infección de vías urinarias</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Atención muy profesional, explicación del médico excelente."</p>
+        <div class="review-footer">
+          <span class="review-author">Artemio R.</span>
+          <span class="review-service">Visita urología</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Excelente servicio, limpieza, calidez y buen trato."</p>
+        <div class="review-footer">
+          <span class="review-author">Melchor B.</span>
+          <span class="review-service">Visita urología</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Todo muy bien, excelente trato y servicio del Dr. Muchas gracias."</p>
+        <div class="review-footer">
+          <span class="review-author">Hernán O.</span>
+          <span class="review-service">Cirugía de Próstata</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Muy buen especialista atendiendo y escuchando al paciente."</p>
+        <div class="review-footer">
+          <span class="review-author">Ariel H.</span>
+          <span class="review-service">Visita urología</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Muy buen doctor con conocimiento de su ramo. Explicación detallada."</p>
+        <div class="review-footer">
+          <span class="review-author">José Julián G.</span>
+          <span class="review-service">Visita urología</span>
+        </div>
+      </div>
+
+    </div>
+
+    <a class="reviews-link" href="https://www.doctoralia.com.mx/axel-schwartz/urologo/nuevo-leon#profile-reviews" target="_blank">
+      Ver todas las opiniones en Doctoralia →
+    </a>
+  </div>
+
+  <!-- UBICACIONES -->
+  <div class="locations-section">
+    <p class="locations-title">📍 Consultorios</p>
+
+    <a class="location-card" href="https://www.google.com/maps/search/?api=1&query=Soto+La+Marina+528+Mitras+Norte+Monterrey+NL" target="_blank">
+      <div class="location-icon">🏥</div>
+      <div class="location-info">
+        <p class="location-name">Mitras Norte</p>
+        <p class="location-address">Soto La Marina #528, Mitras Nte., Monterrey N.L. 64320</p>
+      </div>
+      <span class="location-arrow">›</span>
+    </a>
+
+    <a class="location-card" href="https://www.google.com/maps/search/?api=1&query=Lic+Jose+Benitez+2505+Obispado+Monterrey+NL" target="_blank">
+      <div class="location-icon">🏥</div>
+      <div class="location-info">
+        <p class="location-name">Clínica CERYA · Obispado</p>
+        <p class="location-address">Lic. José Benítez 2505-A, Jardines del Cerro, Monterrey N.L. 64060</p>
+      </div>
+      <span class="location-arrow">›</span>
+    </a>
+
+    <a class="location-card" href="https://www.google.com/maps/search/?api=1&query=Miguel+Hidalgo+y+Costilla+1904+Obispado+Monterrey+NL" target="_blank">
+      <div class="location-icon">🏥</div>
+      <div class="location-info">
+        <p class="location-name">Supermanzana Obispado</p>
+        <p class="location-address">Miguel Hidalgo y Costilla 1904, Obispado, Monterrey N.L. 64060</p>
+      </div>
+      <span class="location-arrow">›</span>
+    </a>
+
+    <p class="insurance-note">✓ Acepta AXA, Atlas, Banorte, Pan-American y más aseguradoras</p>
   </div>
 
   <!-- STICKY WHATSAPP -->
