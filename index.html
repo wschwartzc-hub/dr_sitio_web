@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Axel Schwartz Velazco · Urólogo Monterrey</title>
+  <meta name="description" content="Servicios de urología en Monterrey. Dr. Axel Schwartz Velazco, especialista certificado en Clínica CERYA, Obispado." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F5F2EC;
+      min-height: 100vh;
+      padding-bottom: 96px;
+      color: #0D3347;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0D3347;
+      padding: 40px 24px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(24,123,142,0.18);
+      pointer-events: none;
+    }
+    .header::after {
+      content: '';
+      position: absolute; bottom: -20px; left: -20px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: rgba(201,145,61,0.12);
+      pointer-events: none;
+    }
+    .header-clinic {
+      color: #7FB8C6;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #FFFFFF;
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .header-subtitle {
+      color: #A8D4DC;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #E0F0F4;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      padding: 20px 24px 12px;
+      color: #4A6572;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ── ACCORDION ── */
+    .accordion {
+      padding: 0 16px;
+    }
+    .card {
+      margin-bottom: 10px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .card.open {
+      box-shadow: 0 4px 20px rgba(13,51,71,0.12);
+    }
+
+    .cat-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      background: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .card.open .cat-btn {
+      background: #0D3347;
+    }
+
+    .cat-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cat-icon {
+      font-size: 20px;
+      width: 36px; height: 36px;
+      background: #EEF7F9;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .card.open .cat-icon {
+      background: rgba(255,255,255,0.12);
+    }
+    .cat-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0D3347;
+    }
+    .card.open .cat-name {
+      color: #FFFFFF;
+    }
+    .cat-toggle {
+      color: #187B8E;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .card.open .cat-toggle {
+      color: #7FB8C6;
+      transform: rotate(45deg);
+    }
+
+    /* ── SERVICES LIST ── */
+    .services-list {
+      background: #FFFFFF;
+      display: none;
+    }
+    .card.open .services-list {
+      display: block;
+    }
+    .service-item {
+      padding: 14px 18px;
+      border-top: 1px solid #F0EDE8;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #C9913D;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .service-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0D3347;
+      margin-bottom: 3px;
+    }
+    .service-desc {
+      font-size: 12.5px;
+      color: #5E7A86;
+      line-height: 1.55;
+    }
+
+    .cat-cta {
+      padding: 12px 18px 16px;
+    }
+    .cat-cta a {
+      display: block;
+      text-align: center;
+      background: #187B8E;
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 11px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .cat-cta a:hover {
+      background: #145f70;
+    }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      margin: 16px 16px 0;
+      background: #FFF8EE;
+      border: 1px solid #EDD99A;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .info-icon { font-size: 18px; flex-shrink: 0; }
+    .info-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #7A5000;
+      margin-bottom: 2px;
+    }
+    .info-text {
+      font-size: 12px;
+      color: #9A7020;
+      line-height: 1.5;
+    }
+
+    /* ── STICKY CTA ── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #FFFFFF;
+      border-top: 1px solid #E8E3DB;
+      padding: 12px 16px;
+      z-index: 100;
+    }
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25D366;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+      font-family: 'Inter', sans-serif;
+    }
+    .wa-btn:hover { background: #1ebe5d; }
+    .wa-btn svg { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <p class="header-clinic">Clínica CERYA · Monterrey</p>
+    <h1>Dr. Axel Schwartz Velazco</h1>
+    <p class="header-subtitle">Especialista en Urología · Cédula 3279454</p>
+    <div class="badges">
+      <span class="badge">Consejo Nac. de Urología</span>
+      <span class="badge">289 opiniones verificadas</span>
+      <span class="badge">Mínima invasión</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="intro">Selecciona una categoría para ver los servicios disponibles.</p>
+
+  <!-- ACCORDION -->
+  <div class="accordion">
+
+    <!-- CONSULTAS -->
+    <div class="card" id="card-consultas">
+      <button class="cat-btn" onclick="toggle('consultas')">
+        <div class="cat-left">
+          <div class="cat-icon">🩺</div>
+          <span class="cat-name">Consultas</span>
+        </div>
+        <span class="cat-toggle">+</span>
+      </button>
+      <div class="services-list">
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Consulta de Urología</p><p class="service-desc">Primera valoración urológica. Diagnóstico, revisión de síntomas y plan de tratamiento personalizado.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Consulta Subsecuente</p><p class="service-desc">Seguimiento médico tras diagnóstico o procedimiento previo.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Consulta en Línea</p><p class="service-desc">Valoración médica por videollamada para pacientes foráneos o con dificultad de traslado.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Valoración Preventiva de Próstata</p><p class="service-desc">Revisión preventiva para hombres mayores de 40 años. Incluye exploración y antígeno prostático.</p></div></div>
+        <div class="cat-cta"><a href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta." target="_blank">Agendar consulta por WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- PRÓSTATA -->
+    <div class="card" id="card-prostata">
+      <button class="cat-btn" onclick="toggle('prostata')">
+        <div class="cat-left">
+          <div class="cat-icon">🔬</div>
+          <span class="cat-name">Próstata</span>
+        </div>
+        <span class="cat-toggle">+</span>
+      </button>
+      <div class="services-list">
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Hiperplasia Prostática</p><p class="service-desc">Diagnóstico y manejo de crecimiento benigno de próstata. Opciones médicas y quirúrgicas.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Cirugía de Mínima Invasión de Próstata</p><p class="service-desc">Resección transuretral. Procedimiento mínimamente invasivo sin incisión externa.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Detección de Cáncer de Próstata</p><p class="service-desc">Evaluación con antígeno prostático (PSA), tacto rectal y biopsia cuando se requiere.</p></div></div>
+        <div class="cat-cta"><a href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20consulta%20de%20pr%C3%B3stata." target="_blank">Agendar cita para próstata</a></div>
+      </div>
+    </div>
+
+    <!-- CÁLCULOS -->
+    <div class="card" id="card-calculos">
+      <button class="cat-btn" onclick="toggle('calculos')">
+        <div class="cat-left">
+          <div class="cat-icon">💧</div>
+          <span class="cat-name">Cálculos y Vías Urinarias</span>
+        </div>
+        <span class="cat-toggle">+</span>
+      </button>
+      <div class="services-list">
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Cálculos Renales</p><p class="service-desc">Manejo de piedras en riñón, uréter o vejiga. Litotripsia y ureteroscopía según el caso.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Litotripsia Intracorpórea</p><p class="service-desc">Fragmentación de cálculos con ondas de choque, sin cirugía abierta.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Infecciones Urinarias</p><p class="service-desc">Diagnóstico y tratamiento de cistitis, uretritis y pielonefritis en hombres y mujeres.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Obstrucción de Vías Urinarias</p><p class="service-desc">Evaluación y corrección de bloqueos en el tracto urinario inferior.</p></div></div>
+        <div class="cat-cta"><a href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20c%C3%A1lculos%20renales." target="_blank">Agendar cita para cálculos renales</a></div>
+      </div>
+    </div>
+
+    <!-- SALUD SEXUAL -->
+    <div class="card" id="card-sexual">
+      <button class="cat-btn" onclick="toggle('sexual')">
+        <div class="cat-left">
+          <div class="cat-icon">⚕️</div>
+          <span class="cat-name">Salud Sexual Masculina</span>
+        </div>
+        <span class="cat-toggle">+</span>
+      </button>
+      <div class="services-list">
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Disfunción Eréctil</p><p class="service-desc">Evaluación integral y opciones de tratamiento médico o quirúrgico.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Vasectomía</p><p class="service-desc">Procedimiento ambulatorio de anticoncepción masculina permanente. Mínima invasión.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Varicocele</p><p class="service-desc">Corrección quirúrgica de várices en testículo. Mejora fertilidad y alivia molestias.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Tratamiento de Eyaculación Precoz</p><p class="service-desc">Evaluación y manejo integral con opciones terapéuticas personalizadas.</p></div></div>
+        <div class="cat-cta"><a href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20de%20salud%20sexual." target="_blank">Agendar cita por WhatsApp</a></div>
+      </div>
+    </div>
+
+    <!-- CIRUGÍA -->
+    <div class="card" id="card-cirugia">
+      <button class="cat-btn" onclick="toggle('cirugia')">
+        <div class="cat-left">
+          <div class="cat-icon">🏥</div>
+          <span class="cat-name">Cirugía Urológica</span>
+        </div>
+        <span class="cat-toggle">+</span>
+      </button>
+      <div class="services-list">
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Circuncisión / Fimosis</p><p class="service-desc">Procedimiento quirúrgico para corrección de fimosis o parafimosis en adultos.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Cirugía de Verrugas Genitales (VPH)</p><p class="service-desc">Extirpación de condilomas con cirugía o láser. Diagnóstico y seguimiento incluido.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Biopsia de Próstata</p><p class="service-desc">Toma de muestra guiada para diagnóstico de cáncer prostático.</p></div></div>
+        <div class="service-item"><div class="dot"></div><div><p class="service-name">Ureteroscopía</p><p class="service-desc">Visualización y tratamiento endoscópico del tracto urinario sin incisión.</p></div></div>
+        <div class="cat-cta"><a href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20cirug%C3%ADa." target="_blank">Agendar cita para cirugía</a></div>
+      </div>
+    </div>
+
+  </div><!-- /accordion -->
+
+  <!-- INFO STRIP -->
+  <div class="info-strip">
+    <span class="info-icon">📍</span>
+    <div>
+      <p class="info-title">Clínica CERYA · Obispado</p>
+      <p class="info-text">Lic. José Benítez 2505, Col. Obispado, Monterrey N.L. · Acepta AXA, Atlas, Banorte y más.</p>
+    </div>
+  </div>
+
+  <!-- STICKY WHATSAPP -->
+  <div class="sticky-cta">
+    <a class="wa-btn" href="https://wa.me/528141625653?text=Hola%20Dr.%20Schwartz%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita." target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Agendar cita por WhatsApp
+    </a>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const card = document.getElementById('card-' + id);
+      const isOpen = card.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+      // Open clicked if it wasn't open
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+
+</body>
+</html>
